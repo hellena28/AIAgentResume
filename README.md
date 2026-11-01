@@ -1,13 +1,17 @@
 # AI Agent HR
 
-AI Agent HR adalah solusi berbasis AI untuk membantu tim HR dalam rekrutmen, onboarding, dan monitoring kinerja karyawan.
+AI Agent HR adalah dashboard web dan backend demo untuk membantu tim HR dalam:
+- screening kandidat otomatis
+- chatbot HR berbasis policy
+- monitoring KPI rekrutmen dan karyawan
+- analisis performa onboarding
 
-## Fitur
-- Screening CV otomatis berdasarkan job description
-- Rekomendasi kandidat dengan skor kecocokan
-- Chatbot HR untuk pertanyaan karyawan
-- KPI dashboard untuk rekrutmen dan kinerja karyawan
-- Template onboarding dan analisis performance
+## Fitur utama
+- Candidate screening berdasarkan job description dan CV
+- Skor kecocokan kandidat (0-100)
+- Chatbot HR untuk pertanyaan umum seperti cuti, benefit, dan payroll
+- Dashboard KPI rekrutmen dan karyawan
+- UI dashboard modern untuk demo produk
 
 ## Struktur proyek
 
@@ -15,17 +19,20 @@ AI Agent HR adalah solusi berbasis AI untuk membantu tim HR dalam rekrutmen, onb
 AIAgentResume/
 ├── app/
 │   ├── api/
-│   │   ├── __init__.py
 │   │   └── routes.py
 │   ├── services/
 │   │   ├── __init__.py
 │   │   ├── hr_agent.py
 │   │   ├── kpi_service.py
 │   │   └── sample_data.py
+│   ├── static/
+│   │   ├── script.js
+│   │   └── style.css
+│   ├── templates/
+│   │   └── index.html
 │   ├── __init__.py
 │   ├── config.py
-│   ├── main.py
-│   └── models.py
+│   └── main.py
 ├── tests/
 │   └── test_hr_agent.py
 ├── .gitignore
@@ -39,8 +46,7 @@ AIAgentResume/
 1. Buat virtual environment
 ```bash
 python -m venv .venv
-source .venv/bin/activate   # Linux/macOS
-.venv\Scripts\activate      # Windows
+source .venv/bin/activate
 ```
 
 2. Install dependency
@@ -48,38 +54,36 @@ source .venv/bin/activate   # Linux/macOS
 pip install -r requirements.txt
 ```
 
-3. Jalankan aplikasi
+3. Jalankan app
 ```bash
 uvicorn app.main:app --reload
 ```
 
-4. Akses dokumentasi API
-- Swagger UI: http://localhost:8000/docs
-- ReDoc: http://localhost:8000/redoc
-
-## Endpoint utama
-- `GET /health`
-- `POST /screen-candidate`
-- `POST /chat`
-- `GET /kpi`
-- `GET /dashboard`
-
-## Contoh payload untuk screening kandidat
-```json
-{
-  "job_title": "Senior Data Analyst",
-  "job_description": "Mencari kandidat dengan pengalaman SQL, Python, dashboard, dan analisis data.",
-  "candidate_name": "Rina Rahma",
-  "resume_text": "Saya memiliki pengalaman 5 tahun di analisis data, SQL, Python, dashboard Power BI, dan stakeholder management."
-}
+4. Buka browser
+```text
+http://localhost:8000/
 ```
 
-## Roadmap
-- Integrasi dengan OpenAI / LLM
-- Integrasi database kandidat dan karyawan
-- Modul onboarding otomatis
-- Dashboard analytics lanjutan
-- Notifikasi email dan Slack
+## Endpoint utama
+- GET /health
+- GET /
+- POST /api/screen-candidate
+- POST /api/chat
+- GET /api/kpi
+- GET /api/dashboard
 
-## Lisensi
-MIT
+## Demo penggunaan
+- Isi form screening kandidat di dashboard
+- Klik Analyze Candidate
+- Tanya ke HR assistant seperti:
+  - Berapa cuti tahunan karyawan?
+  - Apa benefit yang diberikan?
+  - Bagaimana proses payroll?
+
+## Catatan
+Proyek ini adalah versi demo MVP, fokus pada alur HR digital dan dashboard interaktif. Untuk production, fitur berikut bisa ditambahkan:
+- autentikasi HR admin
+- database PostgreSQL / MySQL
+- integrasi OpenAI atau LLM
+- export report PDF/Excel
+- onboarding workflow otomatis
