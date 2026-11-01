@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HR Admin Dashboard</title>
+    <meta name="description" content="Admin HR dashboard for recruitment, KPI monitoring, and internal HR assistant." />
+    <link rel="stylesheet" href="/assets/style.css" />
+  </head>
+  <body>
+    <div id="login-screen" class="auth-screen active">
+      <div class="auth-card">
+        <div class="brand-wrap">
+          <div class="brand-mark">HR</div>
+          <div>
+            <p class="eyebrow">Admin Portal</p>
+            <h1>AI HR</h1>
+          </div>
+        </div>
+
+        <form id="login-form" class="login-form">
+          <div class="field">
+            <label for="email">Email admin</label>
+            <input id="email" type="email" value="admin@hr.com" required />
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" type="password" value="admin123" required />
+          </div>
+
+          <div id="login-error" class="error-message" aria-live="polite"></div>
+
+          <button type="submit" class="primary-btn">Masuk ke Dashboard</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="dashboard-screen" class="dashboard-screen">
+      <aside class="sidebar">
+        <div class="brand-wrap sidebar-brand">
+          <div class="brand-mark">HR</div>
+          <div>
+            <p class="eyebrow">Admin Portal</p>
+            <h2>AI HR</h2>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <button class="nav-item active">Dashboard</button>
+          <button class="nav-item">Candidates</button>
+          <button class="nav-item">KPI</button>
+          <button class="nav-item">HR Assistant</button>
+        </nav>
+
+        <button id="logout-btn" class="ghost-btn">Keluar</button>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Overview</p>
+            <h1>Human Resource Intelligence</h1>
+          </div>
+          <div class="user-pill" id="user-name">Admin HR</div>
+        </header>
+
+        <section class="kpi-grid" id="kpi-grid"></section>
+
+        <section class="content-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Candidate Screening</h3>
+              <span class="status-pill success">Live</span>
+            </div>
+
+            <form id="screening-form" class="screening-form">
+              <div class="field-row two-col">
+                <div class="field">
+                  <label>Posisi</label>
+                  <input id="job_title" type="text" value="Senior Data Analyst" />
+                </div>
+                <div class="field">
+                  <label>Nama Kandidat</label>
+                  <input id="candidate_name" type="text" value="Rina Rahma" />
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Deskripsi Pekerjaan</label>
+                <textarea id="job_description">Mencari kandidat dengan pengalaman SQL, Python, Power BI, analisis data, dan komunikasi bisnis.</textarea>
+              </div>
+
+              <div class="field">
+                <label>Resume Kandidat</label>
+                <textarea id="resume_text">Saya berpengalaman 5 tahun di Analisis Data dengan SQL, Python, Power BI, dashboard, dan stakeholder management.</textarea>
+              </div>
+
+              <button type="submit" class="primary-btn">Analyze Candidate</button>
+            </form>
+
+            <div id="screening-result" class="result-box">
+              <h4>Hasil Screening</h4>
+              <p>Belum ada hasil.</p>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h3>HR Assistant</h3>
+              <span class="status-pill info">AI</span>
+            </div>
+
+            <div id="chat-box" class="chat-box">
+              <div class="chat-message bot">Halo admin, saya AI HR. Ada yang bisa saya bantu?</div>
+            </div>
+
+            <div class="chat-form">
+              <input id="chat-input" type="text" placeholder="Tanya soal cuti, benefit, payroll..." />
+              <button id="chat-btn" class="primary-btn small">Kirim</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel table-panel">
+          <div class="panel-header">
+            <h3>Candidate List</h3>
+            <span class="status-pill neutral">Updated</span>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Nama</th>
+                <th>Posisi</th>
+                <th>Skor</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="candidate-table"></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <script src="/assets/script.js"></script>
+  </body>
+</html>
