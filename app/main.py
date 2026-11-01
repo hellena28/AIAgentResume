@@ -26,8 +26,5 @@ def health_check():
 async def home(request: Request):
     return templates.TemplateResponse(
         "index.html",
-        {
-            "request": request,
-            "title": settings.APP_NAME,
-        },
+        {"request": request, "title": settings.APP_NAME},
     )
